@@ -17,6 +17,11 @@ namespace poker
     public:
         explicit View(std::shared_ptr<ConstantModelInterface> spConstantModel,
                       std::shared_ptr<Controller> spController);
+        ~View() {}
+        View(const View&) = delete;
+        View& operator=(const View&) = delete;
+        View(View&&) = delete;
+        View& operator=(View&&) = delete;
         void run();
     private:
         const std::string WINDOW_TITLE{"TeFiveCardDrawPoker"};        

@@ -17,6 +17,11 @@ namespace poker
     {
     public:
         explicit Model();
+        ~Model(){}
+        Model(const Model&) = delete;
+        Model& operator=(const Model&) = delete;
+        Model(Model&&) = delete;
+        Model& operator=(Model&&) = delete;
         void addListener(std::shared_ptr<ModelListener> spListener);
         void removeListener(std::shared_ptr<ModelListener> spListener);
         //Constant model interface
@@ -47,6 +52,7 @@ namespace poker
         {
             ANTE = 13,
             MONEY = 1000,
+            COMP_MONEY = 100000,
             BET_MIN = 100,
             BET_STEP = 5,
             NUM_LOWEST_CARDS_TO_DISCARD = 3

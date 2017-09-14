@@ -17,7 +17,7 @@ poker::View::View(std::shared_ptr<poker::ConstantModelInterface> spConstantModel
     window_.setPosition(sf::Vector2i{(screenWidth - WINDOW_WIDTH) / 2,
                                      (screenHeight - WINDOW_HEIGHT) / 2}
                         );
-    spController_->newRoundBtnClicked();
+    spController_->onNewRoundBtnClicked();
     loadFonts();
     loadImages();
     configureTextLables();
@@ -55,25 +55,25 @@ void poker::View::userInputPhase()
                     break;
                 case sf::Keyboard::N:
                     cancelSelection();
-                    spController_->newRoundBtnClicked();
+                    spController_->onNewRoundBtnClicked();
                     break;
                 case sf::Keyboard::C:
-                    spController_->changeCardsBtnClicked(cardsToDiscardPattern_);
+                    spController_->onChangeCardsBtnClicked(cardsToDiscardPattern_);
                     break;
                 case sf::Keyboard::Up:
-                    spController_->mouseWheelScrolledPlus();
+                    spController_->onMouseWheelScrolledPlus();
                     break;
                 case sf::Keyboard::Down:
-                    spController_->mouseWheelScrolledMinus();
+                    spController_->onMouseWheelScrolledMinus();
                     break;
                 case sf::Keyboard::B:
-                    spController_->betBtnClicked();
+                    spController_->onMakeBetBtnClicked();
                     break;
                 case sf::Keyboard::F:
-                    spController_->foldBtnCliked();
+                    spController_->onFoldBtnCliked();
                     break;
                 case sf::Keyboard::S:
-                    spController_->showDownBtnClicked();
+                    spController_->onShowDownBtnClicked();
                     break;
                 default:
                         break;
@@ -115,20 +115,20 @@ void poker::View::userInputPhase()
                     {
                         case 0:
                             cancelSelection();
-                            spController_->newRoundBtnClicked();
+                            spController_->onNewRoundBtnClicked();
                             break;
                         case 1:
-                            spController_->betBtnClicked();
+                            spController_->onMakeBetBtnClicked();
                             break;
                         case 2:
-                            spController_->changeCardsBtnClicked(
+                            spController_->onChangeCardsBtnClicked(
                                     cardsToDiscardPattern_);
                             break;
                         case 3:
-                            spController_->foldBtnCliked();
+                            spController_->onFoldBtnCliked();
                             break;
                         case 4:
-                            spController_->showDownBtnClicked();
+                            spController_->onShowDownBtnClicked();
                             break;
                         case 5:
                             window_.close();
@@ -141,9 +141,9 @@ void poker::View::userInputPhase()
         {
             float delta{event.mouseWheelScroll.delta};
             if(delta > 0)
-                spController_->mouseWheelScrolledPlus();
+                spController_->onMouseWheelScrolledPlus();
             else if(delta < 0)
-                spController_->mouseWheelScrolledMinus();
+                spController_->onMouseWheelScrolledMinus();
         }
     }
 }
@@ -334,7 +334,7 @@ void poker::View::loadImages()
       {"resources/gfx/NewRound.png"},
       {"resources/gfx/Bet.png"},
       {"resources/gfx/ChangeCards.png"},
-      {"resources/gfx/Flop.png"},
+      {"resources/gfx/Fold.png"},
       {"resources/gfx/ShowDown.png"},
       {"resources/gfx/Quit.png"}
     };

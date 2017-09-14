@@ -5,37 +5,37 @@ poker::Controller::Controller(std::shared_ptr<poker::Model> spModel):
     spModel_(spModel)
 {}
 
-void poker::Controller::newRoundBtnClicked()
+void poker::Controller::onNewRoundBtnClicked()
 {
     spModel_->startNewRound();
 }
 
-void poker::Controller::mouseWheelScrolledPlus()
+void poker::Controller::onMouseWheelScrolledPlus()
 {
     spModel_->increaseBet();
 }
 
-void poker::Controller::mouseWheelScrolledMinus()
+void poker::Controller::onMouseWheelScrolledMinus()
 {
     spModel_->decreaseBet();
 }
 
-void poker::Controller::betBtnClicked()
+void poker::Controller::onMakeBetBtnClicked()
 {
     spModel_->makeBet();
 }
 
-void poker::Controller::changeCardsBtnClicked(const std::vector<bool> &pattern)
+void poker::Controller::onChangeCardsBtnClicked(const std::vector<bool> &pattern)
 {
     spModel_->changeHumanPlayerCards(pattern);
 }
 
-void poker::Controller::foldBtnCliked()
+void poker::Controller::onFoldBtnCliked()
 {
     spModel_->fold();
 }
 
-void poker::Controller::showDownBtnClicked()
+void poker::Controller::onShowDownBtnClicked()
 {
     spModel_->showDown();
 }

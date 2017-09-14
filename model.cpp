@@ -10,7 +10,8 @@
 poker::Model::Model():
     upDeck_{std::make_unique<Deck>()},
     upHumanPlayer_{std::make_unique<Player>(humanPlayerName_, MONEY)},
-    upComputerPlayer_{std::make_unique<Player>(computerPlayerName_, MONEY)}
+    upComputerPlayer_{std::make_unique<Player>(computerPlayerName_,
+                                               COMP_MONEY )}
 {
     upDeck_->populate();
     upDeck_->shuffle();
@@ -71,7 +72,7 @@ void poker::Model::increaseBet()
     if(gameState_ == GameState::FIRST_STREET ||
        gameState_ == GameState::SECOND_STREET)
     {
-        if(bet_ < upHumanPlayer_->getMoney() - BET_STEP)
+        if(bet_ < upHumanPlayer_->getMoney() / 2 - BET_STEP)
         {
             bet_ += BET_STEP;
             notifyAllListeners();
@@ -116,6 +117,7 @@ void poker::Model::makeBet()
             gameState_ = GameState::SHOW_DOWN;
             gameInfo_ = std::string("Second bets were made. Players show down threir cards.");
         }
+        bet_ = BET_MIN;
         notifyAllListeners();
     }
 }

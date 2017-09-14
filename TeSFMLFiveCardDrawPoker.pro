@@ -3,7 +3,7 @@ CONFIG += c++1z
 CONFIG -= app_bundle
 CONFIG -= qt
 
-DEFINES += DEBUG
+DEFINES -= DEBUG
 
 LIBS += `pkg-config --libs sfml-all`
 

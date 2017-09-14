@@ -14,13 +14,13 @@ namespace poker
         Controller& operator=(const Controller&) = delete;
         Controller(Controller&&) = delete;
         Controller& operator=(Controller&&) = delete;
-        void newRoundBtnClicked();
-        void mouseWheelScrolledPlus();
-        void mouseWheelScrolledMinus();
-        void betBtnClicked();
-        void changeCardsBtnClicked(const std::vector<bool> &pattern);
-        void foldBtnCliked();
-        void showDownBtnClicked();
+        void onNewRoundBtnClicked();
+        void onMouseWheelScrolledPlus();
+        void onMouseWheelScrolledMinus();
+        void onMakeBetBtnClicked();
+        void onChangeCardsBtnClicked(const std::vector<bool> &pattern);
+        void onFoldBtnCliked();
+        void onShowDownBtnClicked();
     private:
         std::shared_ptr<Model> spModel_;
     };
