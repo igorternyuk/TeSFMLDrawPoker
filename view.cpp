@@ -30,7 +30,11 @@ void poker::View::run()
     while (window_.isOpen())
     {
         userInputPhase();
-        drawingPhase();
+        if(draw_)
+        {
+            drawingPhase();
+        }
+        window_.display();
     }
 }
 
@@ -150,23 +154,17 @@ void poker::View::userInputPhase()
 
 void poker::View::drawingPhase()
 {
-    //Drawing stuff
-
-    if(draw_)
-    {
-        window_.clear(m_bgColor);
-        window_.draw(title_);
-        //Draw cards
-        drawCards();
-        //Draw buttons
-        drawButtons();
-        //Draw game info
-        drawGameTextInfo();
-        //Draw selection
-        drawContourAroundSelectedCards();
-        window_.display();
-        draw_ = false;
-    }
+    window_.clear(m_bgColor);
+    window_.draw(title_);
+    //Draw cards
+    drawCards();
+    //Draw buttons
+    drawButtons();
+    //Draw game info
+    drawGameTextInfo();
+    //Draw selection
+    drawContourAroundSelectedCards();
+    draw_ = false;
 }
 
 void poker::View::drawCard(Card card, int posX, int posY)
